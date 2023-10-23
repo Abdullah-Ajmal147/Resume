@@ -68,10 +68,10 @@ echo "#disconnect-script = /etc/ocserv/.../...." >> /etc/ocserv/ocserv.conf; fi
 
 systemctl restart ocserv;
 echo "Flushing";
-rm -r /root/ocserv* /root/*.sh /root/*.zip
+#rm -r /root/ocserv* /root/*.sh /root/*.zip
 
-sudo rm -f /cd/var/log/messages.*
-cat /dev/null > ~/.bash_history && history -c
+#sudo rm -f /cd/var/log/messages.*
+#cat /dev/null > ~/.bash_history && history -c
 history -c
 
 echo "Exiting"
