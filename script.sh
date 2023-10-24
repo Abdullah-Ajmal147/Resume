@@ -53,7 +53,9 @@ apt install ocserv certbot gnutls-bin -y
 sudo ldconfig
 
 # Added Dns
-echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
+#echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 # Request a Let's Encrypt certificate
 certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN
