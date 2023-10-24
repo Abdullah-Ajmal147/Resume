@@ -8,6 +8,12 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# Check if ocserv has already been set up
+if systemctl is-active --quiet ocserv; then
+    echo "You have already set up the configurations."
+    exit 0
+fi
+
 # Default values
 DOMAIN=""
 EMAIL=""
