@@ -62,24 +62,6 @@ apt install ocserv certbot gnutls-bin -y
 # Run ldconfig to update library paths
 sudo ldconfig
 
-# Added Dns
-# log_message "Updating DNS resolvers..."
-# echo "nameserver 8.8.8.8" > /etc/resolv.conf
-# echo "nameserver 8.8.4.4" >> /etc/resolv.conf
-
-# Open port 80 for Certbot verification
-# iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-
-# Request a Let's Encrypt certificate
-# log_message "Requesting a Let's Encrypt certificate..."
-# certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN
-
-# Check if the certificate files were created
-# if [ ! -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" ] || [ ! -f "/etc/letsencrypt/live/$DOMAIN/privkey.pem" ]; then
-#     log_message "Failed to obtain SSL certificate. Please ensure your domain points to this server and port 80/443 are accessible."
-#     exit 1
-# fi
-
 echo "$(date): Updating DNS resolvers..." | tee -a /var/log/vpnsetup.log
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "nameserver 8.8.4.4" >> /etc/resolv.conf
