@@ -71,6 +71,7 @@ systemctl stop ocserv
 
 # Request a Let's Encrypt certificate
 echo "$(date): Requesting a Let's Encrypt certificate..." | tee -a /var/log/vpnsetup.log
+certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN
 if ! certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN; then
     echo "$(date): Failed to obtain SSL certificate. Please ensure your domain points to this server and port 80/443 are accessible." | tee -a /var/log/vpnsetup.log
     exit 1
@@ -78,8 +79,8 @@ fi
 
 
 # Close port 80 after verification
-iptables -D INPUT -p tcp --dport 80 -j ACCEPT
 log_message "80 port are closed..."
+iptables -D INPUT -p tcp --dport 80 -j ACCEPT
 
 # Configure ocserv with GnuTLS settings
 log_message "Configuring ocserv..."
