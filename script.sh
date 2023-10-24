@@ -54,8 +54,8 @@ sudo ldconfig
 
 # Added Dns
 #echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+# echo "nameserver 8.8.8.8" > /etc/resolv.conf
+# echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 # Request a Let's Encrypt certificate
 certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN
@@ -101,6 +101,7 @@ echo "$OCPASS" | ocpasswd -c /etc/ocserv/ocpasswd "$OCUSER"
 systemctl enable ocserv
 systemctl start ocserv
 
+echo 'rules update'
 # Add iptables rules
 iptables -I INPUT -p tcp --dport 22 -j ACCEPT
 iptables -I INPUT -p tcp --dport 443 -j ACCEPT
