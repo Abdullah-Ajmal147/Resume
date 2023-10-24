@@ -63,11 +63,11 @@ apt install ocserv certbot gnutls-bin -y
 sudo ldconfig
 
 echo "$(date): Updating DNS resolvers..." | tee -a /var/log/vpnsetup.log
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+# echo "nameserver 8.8.8.8" > /etc/resolv.conf
+# echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 # Stop ocserv temporarily to free up port 443
-systemctl stop ocserv
+# systemctl stop ocserv
 
 # Request a Let's Encrypt certificate
 echo "$(date): Requesting a Let's Encrypt certificate..." | tee -a /var/log/vpnsetup.log
@@ -99,7 +99,7 @@ max-clients = 128
 max-same-clients = 4
 no-route = 192.168.5.0/255.255.255.0
 debug = true
-debug-min = 2
+# debug-min = 2
 socket-file = /run/ocserv.socket
 tcp-port = 443
 keepalive = 300
