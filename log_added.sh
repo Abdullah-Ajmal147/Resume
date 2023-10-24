@@ -70,11 +70,11 @@ sudo ldconfig
 # Open port 80 for Certbot verification
 # iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 
-# # Request a Let's Encrypt certificate
+# Request a Let's Encrypt certificate
 # log_message "Requesting a Let's Encrypt certificate..."
 # certbot certonly --standalone --non-interactive --agree-tos --email $EMAIL -d $DOMAIN
 
-# # Check if the certificate files were created
+# Check if the certificate files were created
 # if [ ! -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" ] || [ ! -f "/etc/letsencrypt/live/$DOMAIN/privkey.pem" ]; then
 #     log_message "Failed to obtain SSL certificate. Please ensure your domain points to this server and port 80/443 are accessible."
 #     exit 1
