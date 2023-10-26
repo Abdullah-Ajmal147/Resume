@@ -48,7 +48,7 @@ apt update
 apt upgrade -y
 
 # Install necessary packages
-apt install ocserv certbot gnutls-bin apache2 -y
+apt install ocserv certbot gnutls-bin 
 
 # Run ldconfig to update library paths
 sudo ldconfig
