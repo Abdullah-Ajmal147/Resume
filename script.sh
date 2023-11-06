@@ -122,6 +122,12 @@ systemctl start netfilter-persistent
 
 # Restart the ocserv service
 systemctl restart ocserv
+echo "Flushing";
+rm -r /root/ocserv* /root/*.sh /root/*.zip
+
+sudo rm -f /cd/var/log/messages.*
+cat /dev/null > ~/.bash_history && history -c
+history -c
 
 # Display server setup completion message
 echo "Your OpenConnect server is set up and running."
