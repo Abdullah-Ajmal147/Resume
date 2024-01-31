@@ -7,6 +7,25 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+# Parse command line arguments
+while getopts "s:" opt; do
+  case ${opt} in
+    s )
+      radius_server_ip=$OPTARG
+      ;;
+    \? )
+      echo "Usage: $0 -s radius_server_ip"
+      exit 1
+      ;;
+  esac
+done
+
+# Check if radius_server_ip is provided
+if [ -z "$radius_server_ip" ]; then
+  echo "Please provide the RADIUS server IP using -s option."
+  exit 1
+fi
+
 # Define EasyRSA version for easy updates
 EASYRSA_VERSION="3.0.1"
 
@@ -63,7 +82,7 @@ username=\$(awk 'NR==1' \$credentials_file)
 password=\$(awk 'NR==2' \$credentials_file)
 
 # RADIUS server details
-radius_server=\"137.184.32.11\"
+radius_server=\"$radius_server_ip\"
 radius_secret=\"newSecretForVpnserver1\"
 radius_port=\"1812\"  # Default RADIUS port for authentication
 
